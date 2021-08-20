@@ -28,6 +28,7 @@ public class Menu {
                     websiteService.addWebsite();
                     break;
                 case 2:
+                    websiteService.printWebsites();
                     break;
                 case 0:
                     run = false;

@@ -14,7 +14,7 @@ public class WebsiteService {
         websiteDao.addWebsite(website);
     }
 
-    public void printWebsite(){
-
+    public void printWebsites(){
+        websiteDao.printWebsites();
     }
 }
