@@ -2,48 +2,28 @@ package passwordmanager.account;
 
 import passwordmanager.website.Website;
 import passwordmanager.website.WebsiteDao;
+import passwordmanager.website.WebsiteService;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.Optional;
 
 public class AccountService {
     private final AccountDao accountDao;
-    private final WebsiteDao websiteDao;
+    private final WebsiteService websiteService;
 
-    public AccountService(AccountDao accountDao, WebsiteDao websiteDao) {
+    public AccountService(AccountDao accountDao, WebsiteService websiteService) {
         this.accountDao = accountDao;
-        this.websiteDao = websiteDao;
+        this.websiteService = websiteService;
     }
 
     public void addAccount() {
-        String targetWebsiteId = getTargetWebsiteIdFromUser();
-        Account account = Account.fromUserInput();
-        account.setWebsiteId(targetWebsiteId);
-        accountDao.addAccount(account);
-    }
-
-    private String getTargetWebsiteIdFromUser() {
-        System.out.println("Choose website:");
-        List<Website> websites = websiteDao.getWebsites();
-        printWebsites(websites);
-        int number = getNumberFromUser();
-        Website websiteFromUser = websites.get(number - 1);
-        return websiteFromUser.getId();
-    }
-
-    private int getNumberFromUser() {
-        Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
-        scanner.nextLine();
-        return number;
-    }
-
-    public void printWebsites(List<Website> websites) {
-
-        for (Website website : websites) {
-            int index = websites.indexOf(website) + 1;
-            System.out.format("%d. %s\n", index, website.getNameOfWebsite());
+        Optional<Website> targetWebsiteId = websiteService.getWebsiteFromUser();
+        if (targetWebsiteId.isPresent()) {
+            Account account = Account.fromUserInput();
+            account.setWebsiteId(targetWebsiteId.get().getId());
+            accountDao.addAccount(account);
+            System.out.println("Account save successfully.");
+        } else {
+            System.out.println("Adding account cancelled.");
         }
-        System.out.println();
     }
 }
