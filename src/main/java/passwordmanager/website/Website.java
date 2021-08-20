@@ -1,13 +1,15 @@
+package passwordmanager.website;
+
 import java.util.Scanner;
 
 public class Website {
 
     private String nameOfWebsite;
-    private String link;
+    private String id;
 
-    public Website(String nameOfWebsite, String link) {
+    public Website(String nameOfWebsite, String id) {
         this.nameOfWebsite = nameOfWebsite;
-        this.link = link;
+        this.id = id;
     }
 
 
@@ -19,17 +21,17 @@ public class Website {
         this.nameOfWebsite = nameOfWebsite;
     }
 
-    public String getLink() {
-        return link;
+    public String getId() {
+        return id;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return nameOfWebsite + ":" + link;
+        return nameOfWebsite + ":" + id;
     }
 
 
@@ -37,9 +39,7 @@ public class Website {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter name of website: ");
         String nameOfWebsite = scanner.nextLine();
-        System.out.println("Enter link to website: ");
-        String link = scanner.nextLine();
-        return new Website(nameOfWebsite, link);
+        return new Website(nameOfWebsite, null);
     }
 
 }

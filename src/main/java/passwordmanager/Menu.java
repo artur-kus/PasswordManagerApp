@@ -1,11 +1,18 @@
+package passwordmanager;
+
+import passwordmanager.account.AccountService;
+import passwordmanager.website.WebsiteService;
+
 import java.util.Scanner;
 
 public class Menu {
 
     private final WebsiteService websiteService;
+    private final AccountService accountService;
 
-    public Menu(WebsiteService websiteService) {
+    public Menu(WebsiteService websiteService, AccountService accountService) {
     this.websiteService = websiteService;
+    this.accountService= accountService;
     }
 
     private void printMenu() {
@@ -28,6 +35,9 @@ public class Menu {
                     websiteService.addWebsite();
                     break;
                 case 2:
+                    accountService.addAccount();
+                    break;
+                case 3:
                     websiteService.printWebsites();
                     break;
                 case 0:

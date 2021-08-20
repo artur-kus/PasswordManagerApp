@@ -1,3 +1,5 @@
+package passwordmanager;
+
 import java.util.UUID;
 
 public class UniqueIdGenerator {
