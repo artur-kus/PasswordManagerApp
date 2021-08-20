@@ -14,16 +14,27 @@ public class Menu {
     this.websiteService = websiteService;
     this.accountService= accountService;
     }
+    private void printBaner(){
+        System.out.println(" _____                                    _   __  __                                              _____  _____  \n" +
+                "|  __ \\                                  | | |  \\/  |                                       /\\   |  __ \\|  __ \\ \n" +
+                "| |__) |_ _ ___ _____      _____  _ __ __| | | \\  / | __ _ _ __   __ _  __ _  ___ _ __     /  \\  | |__) | |__) |\n" +
+                "|  ___/ _` / __/ __\\ \\ /\\ / / _ \\| '__/ _` | | |\\/| |/ _` | '_ \\ / _` |/ _` |/ _ \\ '__|   / /\\ \\ |  ___/|  ___/ \n" +
+                "| |  | (_| \\__ \\__ \\\\ V  V / (_) | | | (_| | | |  | | (_| | | | | (_| | (_| |  __/ |     / ____ \\| |    | |     \n" +
+                "|_|   \\__,_|___/___/ \\_/\\_/ \\___/|_|  \\__,_| |_|  |_|\\__,_|_| |_|\\__,_|\\__, |\\___|_|    /_/    \\_\\_|    |_|     \n" +
+                "                                                                        __/ |                                   \n" +
+                "                                                                       |___/                                    ");
+    }
 
     private void printMenu() {
+        System.out.println("PASSWORD MANAGER APP");
         System.out.println("1. ADD WEBSITE");
-        System.out.println("2. ADD ACCOUNT");
+        System.out.println("2. ADD ACCOUNT TO WEBSITE");
         System.out.println("3. SHOW WEBSITES");
-        System.out.println("4. SHOW ACCOUNTS FOR WEBSITES");
         System.out.println("0. EXIT");
     }
 
     public void start() {
+        printBaner();
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
 

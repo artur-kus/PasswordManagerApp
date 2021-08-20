@@ -12,7 +12,7 @@ public class Main {
         WebsiteDao websiteDao = new WebsiteDao();
         WebsiteService websiteService = new WebsiteService(websiteDao);
         AccountDao accountDao = new AccountDao();
-        AccountService accountService = new AccountService(accountDao);
+        AccountService accountService = new AccountService(accountDao, websiteDao);
         Menu menu = new Menu(websiteService, accountService);
         menu.start();
     }

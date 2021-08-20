@@ -19,7 +19,7 @@ public class AccountDao {
 
     public void addAccount(Account account) {
         try {
-            String query = ("INSERT INTO account (id, assignment_to_website, mail, password, description) VALUES (?, ?, ?, ?, ?)");
+            String query = ("INSERT INTO account (id, website_id, mail, password, description) VALUES (?, ?, ?, ?, ?)");
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, uniqueIdGenerator.generateId());
             preparedStmt.setString(2, account.getWebsiteId());

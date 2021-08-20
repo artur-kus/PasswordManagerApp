@@ -18,8 +18,10 @@ public class WebsiteService {
     public void printWebsites() {
         List<Website> websites = websiteDao.getWebsites();
         for (Website website : websites) {
-            System.out.format("%s\n", website.getNameOfWebsite());
+            int index = websites.indexOf(website)+1;
+            System.out.format("%d. %s\n", index, website.getNameOfWebsite());
         }
+        System.out.println();
     }
 
 }
