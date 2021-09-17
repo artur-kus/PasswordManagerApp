@@ -48,9 +48,15 @@ public class Menu {
                 case 2:
                     accountService.addAccount();
                     break;
-                case 3:
-                    websiteService.printWebsites();
+//                case 3:
+////                    websiteService.printWebsites();
+//                    break;
+                case 4:
+                    accountService.printAccounts();
                     break;
+//                case 5:
+////                    websiteService.printWebsites();
+//                    break;
                 case 0:
                     run = false;
                     break;

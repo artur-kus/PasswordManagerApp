@@ -1,11 +1,11 @@
 package passwordmanager.account;
 
 import passwordmanager.UniqueIdGenerator;
+import passwordmanager.website.Website;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDao {
 
@@ -30,5 +30,27 @@ public class AccountDao {
         } catch (SQLException throwables) {
             System.out.println("Error: " + throwables.getMessage());
         }
+    }
+
+    public List<Account> getAccounts() {
+        List<Account> listOfAccounts = new ArrayList<>();
+
+        try {
+            String query = ("select mail, password, description, website_id from account");
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            ResultSet result = preparedStmt.executeQuery(query);
+            while (result.next()) {
+                String mail = result.getString("mail");
+                String password = result.getString("password");
+                String description = result.getString("description");
+                String id = result.getString("website_id");
+                Account account = new Account(id, mail, password, description);
+                listOfAccounts.add(account);
+            }
+            preparedStmt.execute();
+        } catch (SQLException throwables) {
+            System.out.println("Error " + throwables.getMessage());
+        }
+        return listOfAccounts;
     }
 }

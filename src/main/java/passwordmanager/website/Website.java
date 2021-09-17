@@ -1,5 +1,7 @@
 package passwordmanager.website;
 
+import passwordmanager.account.Account;
+
 import java.util.Scanner;
 
 public class Website {

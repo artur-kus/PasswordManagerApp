@@ -1,8 +1,13 @@
 package passwordmanager.website;
 
+import passwordmanager.account.Account;
+import passwordmanager.account.AccountService;
+
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+
 
 public class WebsiteService {
 
@@ -17,10 +22,21 @@ public class WebsiteService {
         websiteDao.addWebsite(website);
     }
 
-    public void printWebsites() {
-        List<Website> websiteList = websiteDao.getWebsites();
-        printWebsites(websiteList);
-    }
+//    public void printWebsites() {
+//        try {
+//            Connection connection;
+//          connection =  DriverManager.getConnection(
+//                    "jdbc:mysql://localhost:3306/password_menager", "admin", "admin123");
+//            String query = "select name_of_website, mail, password, description from account LEFT JOIN website w on account.website_id = w.id " +
+//                    "WHERE website_id=\"" + getWebsiteFromUser() + "\" ORDER BY name_of_website;";
+//            System.out.println(query);
+//            PreparedStatement preparedStmt = connection.prepareStatement(query);
+//            ResultSet result = preparedStmt.executeQuery(query);
+//        } catch (
+//                SQLException throwables) {
+//            System.out.println("Error: " + throwables.getMessage());
+//        }
+//    }
 
     private void printWebsites(List<Website> websites) {
         for (Website website : websites) {
@@ -54,4 +70,3 @@ public class WebsiteService {
         return number;
     }
 }
-
