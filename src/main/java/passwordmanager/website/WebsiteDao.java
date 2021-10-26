@@ -1,10 +1,12 @@
 package passwordmanager.website;
 
 import passwordmanager.UniqueIdGenerator;
+import passwordmanager.account.Account;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class WebsiteDao {
@@ -39,7 +41,7 @@ public class WebsiteDao {
             while (result.next()) {
                 String nameOfWebsite = result.getString("name_of_website");
                 String idWebsite = result.getString("id");
-                Website website = new Website(nameOfWebsite, idWebsite);
+                Website website = new Website(nameOfWebsite, idWebsite, null);
                 listOfWebsite.add(website);
             }
             preparedStmt.execute();

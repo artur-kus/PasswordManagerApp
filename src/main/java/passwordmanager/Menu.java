@@ -1,8 +1,10 @@
 package passwordmanager;
 
+import passwordmanager.account.AccountDao;
 import passwordmanager.account.AccountService;
 import passwordmanager.website.WebsiteService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
@@ -26,10 +28,11 @@ public class Menu {
     }
 
     private void printMenu() {
+        System.out.println();
         System.out.println("PASSWORD MANAGER APP");
         System.out.println("1. ADD WEBSITE");
         System.out.println("2. ADD ACCOUNT TO WEBSITE");
-        System.out.println("3. SHOW WEBSITES");
+        System.out.println("3. SHOW ACCOUNTS & WEBSITES");
         System.out.println("0. EXIT");
     }
 
@@ -48,15 +51,14 @@ public class Menu {
                 case 2:
                     accountService.addAccount();
                     break;
-//                case 3:
-////                    websiteService.printWebsites();
-//                    break;
-                case 4:
-                    accountService.printAccounts();
+                case 3:
+                    try {
+                        AccountDao accountDao = new AccountDao();
+                        websiteService.printAccountsToWebsite(accountDao.saveAccountsToWebsite(websiteService.getWebsiteFromUser()));
+                    } catch (SQLException throwables) {
+                        System.out.println("Error: " + throwables.getMessage());
+                    }
                     break;
-//                case 5:
-////                    websiteService.printWebsites();
-//                    break;
                 case 0:
                     run = false;
                     break;

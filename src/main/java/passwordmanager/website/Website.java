@@ -8,12 +8,13 @@ public class Website {
 
     private String nameOfWebsite;
     private String id;
+    private Account Account;
 
-    public Website(String nameOfWebsite, String id) {
+    public Website(String nameOfWebsite, String id, passwordmanager.account.Account account) {
         this.nameOfWebsite = nameOfWebsite;
         this.id = id;
+        Account = account;
     }
-
 
     public String getNameOfWebsite() {
         return nameOfWebsite;
@@ -41,7 +42,7 @@ public class Website {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter name of website: ");
         String nameOfWebsite = scanner.nextLine();
-        return new Website(nameOfWebsite, null);
+        return new Website(nameOfWebsite, null, null);
     }
 
 }
